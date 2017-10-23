@@ -67,10 +67,6 @@ public class BasicStringCalculator implements StringCalculator{
 				.collect(Collectors.joining("|"));
 	}
 
-	@Override
-	public String setBrand() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

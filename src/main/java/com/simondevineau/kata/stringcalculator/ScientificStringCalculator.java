@@ -1,19 +1,11 @@
 package com.simondevineau.kata.stringcalculator;
 
 import java.time.LocalDate;
-import java.time.Period;
+import java.util.stream.Stream;
 
-public class ScientificStringCalculator  implements StringCalculator{
+public class ScientificStringCalculator implements StringCalculator {
 
-	public static String sumDate(String date, String days) {
-		LocalDate localDate = LocalDate.parse(date);
-		return localDate.plusDays(Long.parseLong(days)).toString();
-	}
-
-	public static String sumDate(String date, String years, String months, String days) {
-		Period period = Period.of(Integer.parseInt(years), Integer.parseInt(months), Integer.parseInt(days));
-		return LocalDate.parse(date).plus(period).toString();
-	}
+	private String brand;
 
 	@Override
 	public int sum(String input) {
@@ -22,12 +14,25 @@ public class ScientificStringCalculator  implements StringCalculator{
 
 	@Override
 	public String getBrand() {
-		return null;
+		return brand;
 	}
 
-	@Override
-	public String setBrand() {
-		return null;
+	public String setBrand(String brand) {
+		return this.brand = brand;
+	}
+
+	public LocalDate sumDate(String date, String input) {
+		if (date.isEmpty()) {
+			date = LocalDate.MIN.toString();
+		}
+		if (input.isEmpty()) {
+			return LocalDate.parse(date);
+		}
+		LocalDate initialDate = LocalDate.parse(date);
+		int period = Stream.of(input.split(",")).mapToInt(d -> Integer.parseInt(d)).sum();
+
+		return initialDate.plusDays(period);
+
 	}
 
 }
