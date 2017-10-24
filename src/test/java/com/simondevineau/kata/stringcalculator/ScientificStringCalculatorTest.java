@@ -50,4 +50,12 @@ public class ScientificStringCalculatorTest {
 
 	}
 
+	
+	@Test
+	public void sum_date_whith_single_period(){
+		assertEquals(LocalDate.parse("2018-10-23"), scientifiStringCalculator.sumDate("2017-10-23","P1Y"));
+		assertEquals(LocalDate.parse("2020-10-23"), scientifiStringCalculator.sumDate("2018-10-23","P2Y"));
+
+	}
+
 }
