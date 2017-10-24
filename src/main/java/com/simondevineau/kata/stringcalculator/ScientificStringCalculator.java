@@ -1,6 +1,7 @@
 package com.simondevineau.kata.stringcalculator;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.stream.Stream;
 
 public class ScientificStringCalculator implements StringCalculator {
@@ -30,7 +31,6 @@ public class ScientificStringCalculator implements StringCalculator {
 		}
 		LocalDate initialDate = LocalDate.parse(date);
 		int period = Stream.of(input.split(",")).mapToInt(d -> Integer.parseInt(d)).sum();
-
 		return initialDate.plusDays(period);
 
 	}

@@ -37,9 +37,16 @@ public class ScientificStringCalculatorTest {
 	}
 	
 	@Test
-	public void should_return_sum_two_dates_separated_by_coma(){
+	public void sum_date_when_single_numDays_input(){
 		assertEquals(LocalDate.parse("2018-10-23"), scientifiStringCalculator.sumDate("2017-10-23","365"));
 		assertEquals(LocalDate.parse("2019-10-23"), scientifiStringCalculator.sumDate("2018-10-23","365"));
+
+	}
+	
+	@Test
+	public void sum_date_when_two_numDays_input(){
+		assertEquals(LocalDate.parse("2018-11-02"), scientifiStringCalculator.sumDate("2017-10-23","365,10"));
+		assertEquals(LocalDate.parse("2019-11-22"), scientifiStringCalculator.sumDate("2018-10-23","365,30"));
 
 	}
 
