@@ -29,19 +29,30 @@ public class ScientificStringCalculator implements StringCalculator {
 		if (input.isEmpty()) {
 			return LocalDate.parse(date);
 		}
-		
 		LocalDate initialDate = LocalDate.parse(date);
+		Period p = parseInput(input);
+		return initialDate.plus(p);
 
-		if(input.startsWith("P")){
-			Period p = Period.parse(input);
-			return initialDate.plus(p);
-			
-		}else{
+	}
 
-		int period = Stream.of(input.split(",")).mapToInt(d -> Integer.parseInt(d)).sum();
-		return initialDate.plusDays(period);
+	private Period parseInput(String input) {
+		Period p;
+		if (isPeriod(input)) {
+			p = Stream.of(input.split(",")).
+					map(period -> Period.parse(period)).
+					reduce((x, y) -> x.plus(y)).
+					get();
+		} else {
+			int numDays = Stream.of(input.split(",")).
+					mapToInt(d -> Integer.parseInt(d)).
+					sum();
+			p = Period.ofDays(numDays);
 		}
+		return p;
+	}
 
+	private boolean isPeriod(String input) {
+		return input.startsWith("P");
 	}
 
 }

@@ -22,9 +22,6 @@ public class ScientificStringCalculatorTest {
 		scientifiStringCalculator = null;
 	}
 
-	// Date with no input returns current date
-	// format of addition date-yyyy-mm-dd
-
 	@Test
 	public void should_return_min_date_when_no_input() {
 		assertEquals(LocalDate.MIN, scientifiStringCalculator.sumDate("",""));
@@ -47,7 +44,6 @@ public class ScientificStringCalculatorTest {
 	public void sum_date_when_two_numDays_input(){
 		assertEquals(LocalDate.parse("2018-11-02"), scientifiStringCalculator.sumDate("2017-10-23","365,10"));
 		assertEquals(LocalDate.parse("2019-11-22"), scientifiStringCalculator.sumDate("2018-10-23","365,30"));
-
 	}
 
 	
@@ -55,7 +51,14 @@ public class ScientificStringCalculatorTest {
 	public void sum_date_whith_single_period(){
 		assertEquals(LocalDate.parse("2018-10-23"), scientifiStringCalculator.sumDate("2017-10-23","P1Y"));
 		assertEquals(LocalDate.parse("2020-10-23"), scientifiStringCalculator.sumDate("2018-10-23","P2Y"));
-
 	}
+	
+	@Test
+	public void sum_date_whith_unlimited_periods(){
+		assertEquals(LocalDate.parse("2019-10-23"), scientifiStringCalculator.sumDate("2017-10-23","P1Y,P1Y"));
+		assertEquals(LocalDate.parse("2021-10-23"), scientifiStringCalculator.sumDate("2018-10-23","P2Y,P1Y"));
+		assertEquals(LocalDate.parse("2021-12-28"), scientifiStringCalculator.sumDate("2018-10-23","P2Y,P1Y2M5D"));
+	}
+
 
 }
