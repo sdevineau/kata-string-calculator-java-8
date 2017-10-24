@@ -23,7 +23,7 @@ stop here if you are a beginner. Continue if you can finish the steps so far in 
 
 # Part II : Scientific String Calculator
 1. Create a Scientific String calculator with a method sumDate(String date, String period)
-    1.1 The method can take a date and a period (a list of number of days). If date is empty, then it returns the minimum date. If period is empty, then it returns  the date itself.
+    1. The method can take a date and a period (a list of number of days). If date is empty, then it returns the minimum date. If period is empty, then it returns  the date itself.
 2. Allow the sumDate to handle an unknown amount of days number
 3. Allow the sumDate to accept a period or an unknown amount of days number  (a period is formated like P2Y3M5D)
 4. Allow the sumDate to accept an unknown amount of periods or  an unknown amount of day numbers
